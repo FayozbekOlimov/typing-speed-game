@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Speed Game</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="game-box">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <h1 class="title">Typing Speed Game</h1>
+            <div class="select">
+                <select id="select">
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </div>
+
+            <h2 class="word" id="word"></h2>
+    
+            <input type="text" class="input" id="input" placeholder="Start typing ...">
+
+            <div class="label">
+                <p class="label-score">Score: 
+                    <span id="score">0</span>
+                </p>
+                <p class="label-time">Time:
+                    <span id="time">10</span>
+                </p>
+            </div>
+        </div>
+        <footer>
+            <a class="link" href="https://github.com/FayozbekOlimov" target="_blank"><i class="fab fa-github"></i> GitHub </a>
+            <p>All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <div class="modal hidden">
+        <h1>Game Over !!!</h1>
+        <h3>
+            Your Score:
+            <span id="yourScore">0</span>
+        </h3>
+        <button class="modal-btn" onclick="location.reload()">Again</button>
+    </div>
+    <div class="overflow hidden"></div>
+
+    <!-- JavaScript -->
+    <script src="./index.js"></script>
+</body>
+</html>
