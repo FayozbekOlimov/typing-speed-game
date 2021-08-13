@@ -1,13 +1,3 @@
-// Words
-const words = [
-    'exercise', 'brother', 'children', 'flower', 'javascript',
-    'expensive', 'favourite', 'somebody', 'different', 'python',
-    'usually', 'mathematics', 'language', 'cinema', 'newspaper',
-    'saturday', 'question', 'computer', 'monitor', 'awesome',
-    'yesterday', 'photograph', 'breakfast', 'probably', 'tomorrow',
-    'beautiful', 'sentence', 'umbrella', 'remember', 'aeroplan'
-];
-
 // Selectors
 const word = document.getElementById('word');
 const input = document.getElementById('input');
@@ -29,8 +19,10 @@ let score = 0;
 let time = 10;
 let difficulty;
 select.value = "medium";
+const API = 'https://random-words-api.vercel.app/word';
 
-showRandomWord();
+
+get();
 
 input.addEventListener('input', () => {
     const arrayWord = word.querySelectorAll('span');
@@ -59,13 +51,13 @@ input.addEventListener('input', () => {
         score++;
         
         if (select.value == 'easy')
-            time += 5;
+            time += 6;
         else if (select.value == 'medium')
-            time += 4;
-        else time += 3;
+            time += 5;
+        else time += 4;
 
         scoreEl.innerText = score;
-        showRandomWord();
+        get();
     }
 });
 
@@ -80,16 +72,18 @@ document.addEventListener('click', (e) => {
     }
 })
 
+
 const setTime = setInterval(changeTime, 1000);
 
-// Functions
-function getRandomWord() {
-    return words[Math.floor(Math.random() * words.length)];
+function get() {
+    fetch(API)
+    .then(request => request.json())
+    .then(showRandomWord);
 }
 
-function showRandomWord() {
+function showRandomWord(w) {
     word.innerHTML = "";
-    randomWord = getRandomWord();
+    randomWord = w[0].word.toLowerCase();
 
     randomWord.split('').forEach(char => {
         const span = document.createElement('span');
@@ -108,5 +102,6 @@ function changeTime() {
         modal.classList.remove("hidden");
         overflow.classList.remove("hidden");
         yourScore.innerText = score;
+        input.setAttribute('readonly', 'readonly');
     }
 }
