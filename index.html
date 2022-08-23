@@ -1,26 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Typing Speed Game</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
     <div class="container">
         <div class="game-box">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+            <div class="game-box__border">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
             <h1 class="title">Typing Speed Game</h1>
-            <div class="select">
+            <div class="levels">
                 <select id="select">
                     <option value="easy">Easy</option>
                     <option value="medium">Medium</option>
@@ -29,11 +35,11 @@
             </div>
 
             <h2 class="word" id="word"></h2>
-    
+
             <input type="text" class="input" id="input" placeholder="Start typing ...">
 
             <div class="label">
-                <p class="label-score">Score: 
+                <p class="label-score">Score:
                     <span id="score">0</span>
                 </p>
                 <p class="label-time">Time:
@@ -41,10 +47,6 @@
                 </p>
             </div>
         </div>
-        <footer>
-            <a class="link" href="https://github.com/FayozbekOlimov" target="_blank"><i class="fab fa-github"></i> GitHub </a>
-            <p>All Rights Reserved.</p>
-        </footer>
     </div>
 
     <div class="modal hidden">
@@ -53,11 +55,12 @@
             Your Score:
             <span id="yourScore">0</span>
         </h3>
-        <button class="modal-btn" onclick="location.reload()">Again</button>
+        <button class="modal-btn" onclick="location.reload()">Play Again</button>
     </div>
     <div class="overflow hidden"></div>
 
     <!-- JavaScript -->
     <script src="./index.js"></script>
 </body>
+
 </html>

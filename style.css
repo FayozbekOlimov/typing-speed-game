@@ -35,7 +35,7 @@ body {
 .game-box {
     max-width: 60rem;
     width: 100%;
-    padding: 1rem;
+    padding: 2rem 1rem;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -43,80 +43,79 @@ body {
     overflow: hidden;
 }
 
-.game-box > span {
+.game-box__border>span {
     display: block;
     position: absolute;
     border-radius: 50%;
 }
 
-.game-box > span:nth-child(1) {
+.game-box__border>span:nth-child(2n+1) {
+    background-color: red;
+}
+
+.game-box__border>span:nth-child(2n) {
+    background-color: green;
+}
+
+.game-box__border>span:nth-child(2),
+.game-box__border>span:nth-child(3),
+.game-box__border>span:nth-child(6),
+.game-box__border>span:nth-child(7) {
+    width: 2rem;
+    height: 10rem;
+}
+
+.game-box__border>span:nth-child(1),
+.game-box__border>span:nth-child(4),
+.game-box__border>span:nth-child(5),
+.game-box__border>span:nth-child(8) {
     width: 10rem;
     height: 2rem;
-    background-color: red;
+}
+
+.game-box__border>span:nth-child(1) {
     left: 0;
     top: 0;
     transform: translateY(-50%);
 }
-.game-box > span:nth-child(2) {
-    width: 2rem;
-    height: 10rem;
-    background-color: green;
+
+.game-box__border>span:nth-child(2) {
     left: 0;
     top: 0;
     transform: translateX(-50%);
 }
-.game-box > span:nth-child(3) {
-    width: 2rem;
-    height: 10rem;
-    background-color: red;
+
+.game-box__border>span:nth-child(3) {
     left: 0;
     bottom: 0;
     transform: translateX(-50%);
 }
-.game-box > span:nth-child(4) {
-    width: 10rem;
-    height: 2rem;
-    background-color: green;
+
+.game-box__border>span:nth-child(4) {
     left: 0;
     bottom: 0;
     transform: translateY(50%);
 }
-.game-box > span:nth-child(5) {
-    width: 10rem;
-    height: 2rem;
-    background-color: red;
+
+.game-box__border>span:nth-child(5) {
     right: 0;
     bottom: 0;
     transform: translateY(50%);
 }
-.game-box > span:nth-child(6) {
-    width: 2rem;
-    height: 10rem;
-    background-color: green;
+
+.game-box__border>span:nth-child(6) {
     right: 0;
     bottom: 0;
     transform: translateX(50%);
 }
-.game-box > span:nth-child(6) {
-    width: 2rem;
-    height: 10rem;
-    background-color: green;
-    right: 0;
-    bottom: 0;
-    transform: translateX(50%);
-}
-.game-box > span:nth-child(7) {
-    width: 2rem;
-    height: 10rem;
-    background-color: red;
+
+.game-box__border>span:nth-child(7) {
     right: 0;
     top: 0;
     transform: translateX(50%);
 }
-.game-box > span:nth-child(8) {
-    width: 10rem;
-    height: 2rem;
-    background-color: green;
+
+.game-box__border>span:nth-child(8) {
     right: 0;
     top: 0;
     transform: translateY(-50%);
@@ -126,15 +125,15 @@ body {
     font-size: 3rem;
     margin-bottom: 2rem;
     color: crimson;
-    text-shadow: 5px 0px 5px rgba(0,0,0,0.5);
+    text-shadow: 5px 0px 5px rgba(0, 0, 0, 0.5);
 }
 
-.select {
+.levels {
     position: relative;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
 }
 
-.select::after {
+.levels::after {
     content: "\25bc";
     background-color: seashell;
     background-color: orangered;
@@ -149,7 +148,7 @@ body {
     font-size: 1.2rem;
 }
 
-select {
+.levels select {
     padding: 0.6rem 2rem 0.6rem 1rem;
     font-size: 1.2rem;
     border: none;
@@ -170,6 +169,7 @@ select {
     color: #fff;
     font-size: 3rem;
     user-select: none;
+    letter-spacing: 2px;
 }
 
 .input {
@@ -210,31 +210,18 @@ select {
 .correct {
     color: green;
 }
+
 .incorrect {
     color: red;
     text-decoration: underline;
-}
-
-footer {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 3%;
-    text-align: center;
-    font-size: 1.2rem;
-    font-weight: bold;
-}
-
-footer .link {
-    text-decoration: none;
 }
 
 /* Modal */
 
 .modal {
     position: absolute;
-    left:50%;
-    top:50%;
+    left: 50%;
+    top: 50%;
     transform: translate(-50%, -50%);
     background-color: rgba(255, 255, 255, 0.9);
     padding: 2rem;
@@ -247,6 +234,7 @@ footer .link {
 .modal h3 {
     line-height: 2;
 }
+
 .hidden {
     display: none;
 }
@@ -286,7 +274,80 @@ footer .link {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
+}
+
+@media (max-width: 575px) {
+
+    .game-box__border>span:nth-child(2),
+    .game-box__border>span:nth-child(3),
+    .game-box__border>span:nth-child(6),
+    .game-box__border>span:nth-child(7) {
+        width: 1.2rem;
+        height: 6rem;
+    }
+
+    .game-box__border>span:nth-child(1),
+    .game-box__border>span:nth-child(4),
+    .game-box__border>span:nth-child(5),
+    .game-box__border>span:nth-child(8) {
+        width: 6rem;
+        height: 1.2rem;
+    }
+
+    .title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .levels {
+        margin-bottom: 2rem;
+    }
+
+    .levels::after {
+        padding: 0.25rem;
+        font-size: 0.9rem;
+    }
+
+    .levels select {
+        font-size: 1rem;
+        padding: 0.4rem 2rem 0.4rem 0.5rem;
+    }
+
+    .word {
+        font-size: 2rem;
+    }
+
+    .input {
+        width: 12rem;
+        font-size: 1.1rem;
+        padding: 0.3rem 0.4rem;
+    }
+
+    .label {
+        font-size: 1rem;
+    }
+
+    .modal {
+        padding: 1rem;
+        max-width: 180px;
+        width: 100%;
+    }
+
+    .modal h1 {
+        font-size: 1.2rem;
+    }
+
+    .modal h3 {
+        font-size: 1rem;
+    }
+
+    .modal-btn {
+        font-size: 0.8rem;
+        padding: 0.2rem 1.5rem;
+    }
+
 }

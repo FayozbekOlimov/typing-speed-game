@@ -14,15 +14,21 @@ const yourScore = document.getElementById("yourScore");
 
 
 // Variables
+const API = 'https://random-word-api.herokuapp.com/word';
+const EASY_VALUE = 6, MEDIUM_VALUE = 5, HARD_VALUE = 4;
+const level_obj = {
+    easy: EASY_VALUE,
+    medium: MEDIUM_VALUE,
+    hard: HARD_VALUE
+};
+
 let randomWord;
-let score = 0;
-let time = 10;
-let difficulty;
-select.value = "medium";
-const API = 'https://random-words-api.vercel.app/word';
+let score = 0, time = 10;
 
-
-get();
+document.addEventListener('DOMContentLoaded', () => {
+    select.value = localStorage.getItem('difficulty') || "medium";
+    getWord();
+});
 
 input.addEventListener('input', () => {
     const arrayWord = word.querySelectorAll('span');
@@ -49,41 +55,29 @@ input.addEventListener('input', () => {
 
     if (check) {
         score++;
-        
-        if (select.value == 'easy')
-            time += 6;
-        else if (select.value == 'medium')
-            time += 5;
-        else time += 4;
-
+        time += level_obj[select.value];
         scoreEl.innerText = score;
-        get();
+        getWord();
     }
 });
 
 select.addEventListener('change', () => {
-    difficulty = select.value;
-    localStorage.setItem('difficulty', difficulty);
+    score = 0;
+    time = 10;
+    localStorage.setItem('difficulty', select.value);
 });
-
-document.addEventListener('click', (e) => {
-    if(e.target.classList[0] == 'overflow') {
-        location.reload();
-    }
-})
-
 
 const setTime = setInterval(changeTime, 1000);
 
-function get() {
+function getWord() {
     fetch(API)
-    .then(request => request.json())
-    .then(showRandomWord);
+        .then(request => request.json())
+        .then(showRandomWord);
 }
 
 function showRandomWord(w) {
     word.innerHTML = "";
-    randomWord = w[0].word.toLowerCase();
+    randomWord = w[0].toLowerCase();
 
     randomWord.split('').forEach(char => {
         const span = document.createElement('span');
@@ -97,7 +91,7 @@ function changeTime() {
     time--;
     timeEl.innerText = time;
 
-    if (time <= 0) {
+    if (time == 0) {
         clearInterval(setTime);
         modal.classList.remove("hidden");
         overflow.classList.remove("hidden");
